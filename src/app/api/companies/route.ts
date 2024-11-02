@@ -5,7 +5,7 @@ function randomCompanyName(index:number){
   return `Company ${String.fromCharCode(65 + (index % 26))}${index + 1}`;
 }
 
-const companies: Company[] = Array.from({ length: 50 }, (_, i) => ({
+const companies: Company[] = Array.from({ length: 100 }, (_, i) => ({
   id: i + 1,
   name: randomCompanyName(i),
 }))
