@@ -39,6 +39,23 @@ export default function Dashboard() {
     })
   }
 
+  const handleDeleteRequest = () => {
+    if (selectedCompanies.size === 0) {
+      alert('Please select at least one company to delete.')
+      return
+    }
+
+    // Simulated on sending a delete request here
+    const selectedCompanyIds = Array.from(selectedCompanies)
+    console.log('Initiating delete request for companies:', selectedCompanyIds)
+    // --------------------
+
+    setCompanies((prevCompanies) => 
+      prevCompanies.filter((company) => !selectedCompanies.has(company.id))
+    )
+    setSelectedCompanies(new Set())
+  }
+
   const loadMore = () => {
     if (hasMore && !loading) setPage((prev) => prev + 1)
   }
@@ -64,6 +81,9 @@ export default function Dashboard() {
           Load More
         </button>
       )}
+      <button onClick={handleDeleteRequest} disabled={selectedCompanies.size === 0}>
+        Delete Selected Data
+      </button>
     </div>
   )
 }
